@@ -39,7 +39,6 @@ const Home = (props: Props) => {
       }
 
       setGenres(tempGenres);
-      console.log(result.data);
       setData(result.data);
       setDisplayedData(result.data);
     } catch (error) {
@@ -107,6 +106,7 @@ const Home = (props: Props) => {
             {displayedData.map((r: any, i: number) => {
               return (
                 <ProductCard
+                  link={r.freetogame_profile_url}
                   img={r.thumbnail}
                   key={"product-" + i}
                   title={`${r.title} (${r.genre})`}
