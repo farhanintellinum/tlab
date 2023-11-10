@@ -9,6 +9,7 @@ const Home = (props: Props) => {
   const [baseUrl, setBaseUrl] = useState(
     "https://free-to-play-games-database.p.rapidapi.com/api/games"
   );
+
   const [genres, setGenres] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -102,22 +103,28 @@ const Home = (props: Props) => {
               })}
             </select>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[34px] mt-[46px]">
-            {displayedData.map((r: any, i: number) => {
-              return (
-                <ProductCard
-                  genre={r.genre}
-                  link={r.freetogame_profile_url}
-                  img={r.thumbnail}
-                  key={"product-" + i}
-                  title={r.title}
-                  desc={r.short_description}
-                  platform={r.platform}
-                  releaseDate={r.release_date}
-                />
-              );
-            })}
-          </div>
+          {!isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[34px] mt-[46px]">
+              {displayedData.map((r: any, i: number) => {
+                return (
+                  <ProductCard
+                    genre={r.genre}
+                    link={r.freetogame_profile_url}
+                    img={r.thumbnail}
+                    key={"product-" + i}
+                    title={r.title}
+                    desc={r.short_description}
+                    platform={r.platform}
+                    releaseDate={r.release_date}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div className="flex justify-center w-full">
+              <h1>Loading game...</h1>
+            </div>
+          )}
         </div>
       </section>
     </div>
