@@ -7,17 +7,23 @@ type Props = {
   releaseDate: string;
   img: string;
   link: string;
+  genre: string;
 };
 
 const ProductCard = (props: Props) => {
-  const { img, title, desc, platform, releaseDate, link } = props;
+  const { img, title, desc, platform, releaseDate, link, genre } = props;
   return (
     <a
       className="bg-white rounded-[8px] px-[12px] pt-[12px] pb-[24px] flex flex-col gap-3 w-full cursor-pointer hover:opacity-80"
       href={link}
       target="_blank"
     >
-      <img src={img} alt="product" className="w-full rounded-[4px]" />
+      <div className="w-full relative ">
+        <img src={img} alt="product" className="w-full rounded-[4px]" />
+        <span className="absolute bottom-3 ms-2 py-1 px-4 bg-[#C1E1FF] rounded-[34px] font-semibold text-[#0E385F]">
+          {genre}
+        </span>
+      </div>
 
       <h5 className="text-xl">{title}</h5>
       <p>{desc}</p>

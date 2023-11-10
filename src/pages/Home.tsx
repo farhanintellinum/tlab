@@ -106,10 +106,11 @@ const Home = (props: Props) => {
             {displayedData.map((r: any, i: number) => {
               return (
                 <ProductCard
+                  genre={r.genre}
                   link={r.freetogame_profile_url}
                   img={r.thumbnail}
                   key={"product-" + i}
-                  title={`${r.title} (${r.genre})`}
+                  title={r.title}
                   desc={r.short_description}
                   platform={r.platform}
                   releaseDate={r.release_date}
